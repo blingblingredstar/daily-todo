@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 const { program } = require('commander')
 const api = require('./index')
+const pkg = require('./package.json')
 
-program.option('-d, --debug', 'output extra debugging')
+program.version(pkg.version)
 
-// Command implemented using action handler (description is supplied separately to `.command`)
-// Returns new command for configuring.
 program
   .command('add')
   .description('add todo')
