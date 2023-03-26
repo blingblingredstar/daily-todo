@@ -11,31 +11,30 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  email String @unique
-  password String
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  email     String    @unique
+  password  String
   firstName String?
-  lastName String?
-  projects Project[]
-  tasks Task[]
+  lastName  String?
+  projects  Project[]
+  tasks     Task[]
 }
 
 model Project {
-  id String @id @default(uuid())
+  id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   ownerId String
-  owner User @relation(fields: [ownerId], references: [id])
+  owner   User   @relation(fields: [ownerId], references: [id])
 
-  name String
+  name        String
   description String?
-  due DateTime?
-  deleted Boolean @default(false)
-  tasks Task[]
-
+  due         DateTime?
+  deleted     Boolean   @default(false)
+  tasks       Task[]
 
   @@unique([ownerId, name])
   @@index([ownerId, id])
@@ -48,22 +47,22 @@ enum TASK_STATUS {
 }
 
 model Task {
-  id String @id @default(uuid())
+  id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   ownerId String
-  owner User @relation(fields: [ownerId], references: [id])
+  owner   User   @relation(fields: [ownerId], references: [id])
 
   projectId String
-  project Project @relation(fields: [projectId], references: [id])
+  project   Project @relation(fields: [projectId], references: [id])
 
-  status TASK_STATUS @default(NOT_STARTED)
-  name String
+  status      TASK_STATUS @default(NOT_STARTED)
+  name        String
   description String
 
-  due DateTime?
-  deleted Boolean @default(false)
+  due     DateTime?
+  deleted Boolean   @default(false)
 
   @@index([ownerId])
 }
