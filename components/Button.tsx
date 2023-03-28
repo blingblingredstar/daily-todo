@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes, PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 const buttonClasses = cva(
   [
@@ -44,7 +44,7 @@ const buttonClasses = cva(
   }
 );
 
-export type ButtonProps = HTMLAttributes<HTMLButtonElement> &
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonClasses>;
 
 const Button: FC<PropsWithChildren<ButtonProps>> = ({
