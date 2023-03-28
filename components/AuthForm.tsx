@@ -47,8 +47,6 @@ const AuthForm: FC<{ mode: 'register' | 'signin' }> = ({ mode }) => {
           });
         } else {
           await signin({
-            firstName,
-            lastName,
             email,
             password,
           });
