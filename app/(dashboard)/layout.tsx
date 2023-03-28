@@ -10,6 +10,11 @@ const inter = Inter({
   subsets: ['latin'],
 });
 
+export const metadata = {
+  title: 'Daily todo Dashboard',
+  description: 'Manage your daily projects',
+};
+
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en" className={clsx(inter.variable, 'dark')}>
