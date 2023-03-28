@@ -7,6 +7,7 @@ import Card from './Card';
 import Input from './Input';
 import Link from 'next/link';
 import Button from './Button';
+import { Route } from '@/lib/routes';
 
 const registerContent = {
   linkUrl: '/signin',
@@ -27,29 +28,40 @@ const signinContent = {
 const initial = { email: '', password: '', firstName: '', lastName: '' };
 
 const AuthForm: FC<{ mode: 'register' | 'signin' }> = ({ mode }) => {
-  const [formState, setFormState] = useState(initial);
+  const [formState, setFormState] = useState({ ...initial });
   const [error, setError] = useState('');
 
   const router = useRouter();
+  const { firstName, lastName, email, password } = formState;
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
       try {
         if (mode === 'register') {
-          await register(formState);
+          await register({
+            firstName,
+            lastName,
+            email,
+            password,
+          });
         } else {
-          await signin(formState);
+          await signin({
+            firstName,
+            lastName,
+            email,
+            password,
+          });
         }
 
-        router.replace('/home');
+        router.replace(Route.home);
       } catch (e) {
         setError(`Could not ${mode}`);
       } finally {
         setFormState({ ...initial });
       }
     },
-    [formState, router, mode]
+    [firstName, lastName, password, email, router, mode]
   );
 
   const content = mode === 'register' ? registerContent : signinContent;

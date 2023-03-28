@@ -1,14 +1,13 @@
 import { FC } from 'react';
 import Card from './Card';
-import Image from 'next/image';
-import logo from '@/assets/images/logo.png';
 import SidebarLink, { Link } from './SidebarLink';
+import { Route } from '@/lib/routes';
 
 const links: Link[] = [
-  { label: 'Home', link: '/home' },
-  { label: 'Calendar', link: '/calendar' },
-  { label: 'Profile', link: '/profile' },
-  { label: 'Settings', link: '/settings' },
+  { label: 'Home', link: Route.home },
+  { label: 'Calendar', link: Route.calendar },
+  { label: 'Profile', link: Route.profile },
+  { label: 'Settings', link: Route.settings },
 ];
 
 const Sidebar: FC = () => {
