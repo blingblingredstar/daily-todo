@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@prisma/client': 4.11.0
+  '@types/bcrypt': ^5.0.0
   '@types/node': 18.15.5
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
@@ -45,6 +46,7 @@ dependencies:
   typescript: 5.0.2
 
 devDependencies:
+  '@types/bcrypt': 5.0.0
   autoprefixer: 10.4.14_postcss@8.4.21
   postcss: 8.4.21
   prisma: 4.11.0
@@ -362,6 +364,12 @@ packages:
 
   /@tsconfig/node16/1.0.3:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
+    dev: true
+
+  /@types/bcrypt/5.0.0:
+    resolution: {integrity: sha512-agtcFKaruL8TmcvqbndlqHPSJgsolhf/qPWchFlgnW1gECTN/nKbFcoFnvKAQRFfKbh+BO6A3SWdJu9t+xF3Lw==}
+    dependencies:
+      '@types/node': 18.15.5
     dev: true
 
   /@types/json5/0.0.29:
