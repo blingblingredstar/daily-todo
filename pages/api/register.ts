@@ -1,9 +1,10 @@
 import { createJWT, hashPassword } from '@/lib/auth';
 import { db } from '@/lib/db';
-import { User } from '@prisma/client';
+
 import { NextApiHandler } from 'next';
 import { ApiError } from 'next/dist/server/api-utils';
 import { serialize } from 'cookie';
+import { SECONDS_IN_A_WEEK } from '@/lib/constants';
 
 export const register: NextApiHandler<ApiError> = async (req, res) => {
   if (req.method !== 'POST') {
@@ -32,7 +33,7 @@ export const register: NextApiHandler<ApiError> = async (req, res) => {
   res.setHeader('Set-Cookie', [
     serialize(process.env.COOKIE_NAME, jwt, {
       httpOnly: true,
-      maxAge: 60 * 60 * 24 * 7,
+      maxAge: SECONDS_IN_A_WEEK,
       path: '/',
     }),
   ]);
