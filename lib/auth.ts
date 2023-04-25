@@ -33,7 +33,7 @@ export const validateJWT = async (jwt: string) => {
     new TextEncoder().encode(process.env.JWT_SECRET)
   );
 
-  return payload.payload as { id: string; email: string };
+  return payload.payload as Pick<User, 'id' | 'email'>;
 };
 
 export const getUserFromCookie = async (cookies: RequestCookies) => {
